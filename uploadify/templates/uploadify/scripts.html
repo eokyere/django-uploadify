@@ -8,6 +8,7 @@
             'uploader'  : '{{ uploadify_serverside_path }}',
             'multi'     : false,
             'auto'      : true,
+            'formData' : { 'csrfmiddlewaretoken' : '{{csrf_token}}' },
         });
     });
 </script>
