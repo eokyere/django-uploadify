@@ -3,23 +3,14 @@ from uploadify import settings
 
 register = template.Library()
 
-# -----------------------------------------------------------------------------
-#   multi_file_upload
-# -----------------------------------------------------------------------------
-@register.inclusion_tag('uploadify/multi_file_upload.html', takes_context=True)
-def multi_file_upload(context, upload_complete_url):
-    """
-    Displays a Flash-based interface for uploading multiple files.
-    When all files have been uploaded, the given URL is POSTed to.  The returned
-    page replaces (AJAX) the upload interface.
+@register.inclusion_tag('uploadify/css.html', takes_context=True)
+def uploadify_css(context):
+    return { 'uploadify_path' : settings.UPLOADIFY_PATH,}
 
-    * filesUploaded - The total number of files uploaded
-    * errors - The total number of errors while uploading
-    * allBytesLoaded - The total number of bytes uploaded
-    * speed - The average speed of all uploaded files
-    """
-    return { 
-        'upload_complete_url' : upload_complete_url,
-        'uploadify_path' : settings.UPLOADIFY_PATH,
-        'upload_path' : settings.UPLOADIFY_UPLOAD_PATH,
-    }
+@register.inclusion_tag('uploadify/scripts.html', takes_context=True)
+def uploadify_scripts(context, uploadify_id, serverside_path):
+    return { 'uploadify_id' : uploadify_id, 'uploadify_path' : settings.UPLOADIFY_PATH, 'uploadify_serverside_path' : serverside_path, }
+
+@register.inclusion_tag('uploadify/element.html', takes_context=True)
+def uploadify_element(context, uploadify_id, form_name):
+    return { 'uploadify_id' : uploadify_id, 'uploadify_form_name': form_name, }

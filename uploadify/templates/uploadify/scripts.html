@@ -1,0 +1,13 @@
+<script type="text/javascript" src="{{ uploadify_path }}jquery.min.js"></script>
+<script type="text/javascript" src="{{ uploadify_path }}swfobject.js"></script>
+<script type="text/javascript" src="{{ uploadify_path }}jquery.uploadify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#{{uploadify_id}}').uploadify({
+            'swf'  : '{{ uploadify_path }}uploadify.swf',
+            'uploader'  : '{{ uploadify_serverside_path }}',
+            'multi'     : false,
+            'auto'      : true,
+        });
+    });
+</script>
