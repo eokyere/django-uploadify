@@ -1,5 +1,1 @@
 *.pyc
-.svn
-
-doc/.build
-doc/_build
