@@ -2,7 +2,30 @@ README
 ======
 
 USAGE:
-------
+******
+
+urls.py:
+
+.. code-block:: python
+    urlpatterns = patterns('',
+        ...
+        url(r'^', include('uploadify.urls')),
+        ...
+    )
+
+settings.py:
+
+.. code-block:: python
+
+    INSTALLED_APPS = {
+        ...
+        'uploadify',
+        ...
+    }
+
+    UPLOADIFY_UPLOAD_PATH = "uploads"
+
+In your application templates:
 
 .. code-block:: html
 
