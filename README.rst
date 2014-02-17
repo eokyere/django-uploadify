@@ -7,6 +7,7 @@ USAGE:
 urls.py:
 
 .. code-block:: python
+
     urlpatterns = patterns('',
         ...
         url(r'^', include('uploadify.urls')),
@@ -25,7 +26,7 @@ settings.py:
 
     UPLOADIFY_UPLOAD_PATH = "uploads"
 
-In your application templates:
+In your application's templates:
 
 .. code-block:: html
 
