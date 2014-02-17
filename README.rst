@@ -1,6 +1,8 @@
 README
 ======
 
+A basic uploadify wrapper for django framework.
+
 USAGE:
 ******
 
