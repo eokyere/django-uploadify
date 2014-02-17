@@ -18,11 +18,11 @@ settings.py:
 
 .. code-block:: python
 
-    INSTALLED_APPS = {
+    INSTALLED_APPS = (
         ...
         'uploadify',
         ...
-    }
+    )   
 
     UPLOADIFY_UPLOAD_PATH = "uploads"
 
