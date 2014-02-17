@@ -4,11 +4,12 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#{{uploadify_id}}').uploadify({
+            'multi'     : false,
             'swf'  : '{{ uploadify_path }}uploadify.swf',
             'uploader'  : '{{ uploadify_serverside_path }}',
-            'multi'     : false,
-            'auto'      : true,
             'formData' : { 'csrfmiddlewaretoken' : '{{csrf_token}}' },
+            'onUploadSuccess': function() { $('div#{{uploadify_id}}').hide(); },
+            'fileTypeExts' : '*.gif; *.jpg; *.png',
         });
     });
 </script>
