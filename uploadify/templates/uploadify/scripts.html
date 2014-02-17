@@ -3,13 +3,17 @@
 <script type="text/javascript" src="{{ uploadify_path }}jquery.uploadify.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
+        $('div#uploadify_placeholder').load('/uploaded_view/');
         $('#{{uploadify_id}}').uploadify({
             'multi'     : false,
             'swf'  : '{{ uploadify_path }}uploadify.swf',
             'uploader'  : '{{ uploadify_serverside_path }}',
             'formData' : { 'csrfmiddlewaretoken' : '{{csrf_token}}' },
-            'onUploadSuccess': function() { $('div#{{uploadify_id}}').hide(); },
+            'onUploadSuccess': function() { 
+                $('div#uploadify_placeholder').load("/uploaded_view/"); 
+            },
             'fileTypeExts' : '*.gif; *.jpg; *.png',
+            'buttonText': 'Subir Imagen',
         });
     });
 </script>

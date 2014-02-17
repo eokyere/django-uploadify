@@ -111,7 +111,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 					fileSizeLimit   : 0,                  // The maximum size of an uploadable file in KB (Accepts units B KB MB GB if string, 0 for no limit)
 					fileTypeDesc    : 'All Files',        // The description for file types in the browse dialog
 					fileTypeExts    : '*.*',              // Allowed extensions in the browse dialog (server-side validation should also be used)
-					height          : 30,                 // The height of the browse button
+					height          : 35,                 // The height of the browse button
 					itemTemplate    : false,              // The template for the file item in the queue
 					method          : 'post',             // The method to use when sending files to the server-side upload script
 					multi           : true,               // Allow multiple file selection in the browse dialog
@@ -125,7 +125,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 					requeueErrors   : false,              // Keep errored files in the queue and keep trying to upload them
 					successTimeout  : 30,                 // The number of seconds to wait for Flash to detect the server's response after the file has finished uploading
 					uploadLimit     : 0,                  // The maximum number of files you can upload
-					width           : 120,                // The width of the browse button
+					width           : 200,                // The width of the browse button
 					
 					// Events
 					overrideEvents  : []             // (Array) A list of default event handlers to skip
@@ -229,7 +229,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 					// Create the button
 					var $button = $('<div />', {
 						'id'    : settings.id + '-button',
-						'class' : 'uploadify-button ' + settings.buttonClass
+						'class' : 'btn btn-success' + settings.buttonClass
 					});
 					if (settings.buttonImage) {
 						$button.css({
@@ -237,19 +237,15 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 							'text-indent'      : '-9999px'
 						});
 					}
-					$button.html('<span class="uploadify-button-text">' + settings.buttonText + '</span>')
-					.css({
-						'height'      : settings.height + 'px',
-						'line-height' : settings.height + 'px',
-						'width'       : settings.width + 'px'
-					});
+					$button.html('<b id="uploadify-button-text">' + settings.buttonText + '</b>')
 					// Append the button to the wrapper
 					$wrapper.append($button);
 
 					// Adjust the styles of the movie
 					$('#' + swfuploadify.movieName).css({
 						'position' : 'absolute',
-						'z-index'  : 1
+						'z-index'  : 1,
+                        'margin-top' : '10px',
 					});
 					
 					// Create the file queue
@@ -476,7 +472,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 							}
 							break;
 						case 'buttonText':
-							$('#' + settings.id + '-button').find('.uploadify-button-text').html(value);
+							$('#' + settings.id + '-button').find('#uploadify-button-text').html(value);
 							break;
 						case 'width':
 							swfuploadify.setButtonDimensions(value, settings.height);

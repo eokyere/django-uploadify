@@ -42,5 +42,10 @@ def upload(request):
     return HttpResponse(json.dumps({'status':'uploaded', 'file':SessionDestination}), content_type="application/json")
 
 def uploaded_view(request):
-    img = get_thumbnail(request.session['form_img'], '200x200', crop='center', format="PNG")
-    return HttpResponse('<img alt="Image" border="0" src="'+settings.MEDIA_URL+img.name+'" width="'+str(img.width)+'" height="'+str(img.height)+'">')
+    if request.session.has_key('form_img'):
+        img = get_thumbnail(request.session['form_img'], '200x200', crop='center', format="PNG")
+        return HttpResponse('<img alt="Image" border="0" src="'+settings.MEDIA_URL+img.name+'" width="'+str(img.width)+'" height="'+str(img.height)+'">')
+    return HttpResponse('No hay imagen', content_type='text/html')
+
+def get_image_path(request):
+    return request.session['form_img']
